@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>OpenStreetMap Plot</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <style>
+        #map { height: 600px; width: 100%; }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+    <script>
+        var map = L.map('map').setView([20, 0], 3);
+        
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
+
+        var locations = [{ "address": "2.18.27.76", "latitude": 51.536800, "longitude": -0.671800 }, { "address": "2.18.27.82", "latitude": 51.536800, "longitude": -0.671800 }, { "address": "2.18.27.89", "latitude": 51.536800, "longitude": -0.671800 }, { "address": "2.19.252.151", "latitude": 51.536800, "longitude": -0.671800 }, { "address": "3.75.168.79", "latitude": 50.116900, "longitude": 8.683700 }];
+
+        locations.forEach(function(location) {
+            L.marker([location.latitude, location.longitude]).addTo(map)
+                .bindPopup("<b>IP Address:</b> " + location.address);
+        });
+    </script>
+</body>
+</html>

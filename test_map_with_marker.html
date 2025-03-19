@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Map with Static Marker</title>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCL20d4eLO1fFvfqkpz4l1WDYhqMM9pRF8" async defer></script>
+    <style>
+        #map {
+            height: 500px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <h1>Test Google Map with Static Marker</h1>
+    <div id="map"></div>
+
+    <script>
+        var map;
+
+        function initMap() {
+            map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 5,
+                center: { lat: 41.6015, lng: -93.6127 }  // Des Moines, IA (Example)
+            });
+
+            // Add a static test marker (Des Moines)
+            var marker = new google.maps.Marker({
+                position: { lat: 41.6015, lng: -93.6127 },
+                map: map,
+                title: 'Des Moines, IA'
+            });
+        }
+    </script>
+
+    <script>
+        // Initialize the map once the window has loaded
+        window.onload = function() {
+            initMap();
+        };
+    </script>
+</body>
+</html>
