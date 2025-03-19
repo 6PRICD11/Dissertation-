@@ -27,7 +27,7 @@ local html_template = [[
 
             var heatmap = new google.maps.visualization.HeatmapLayer({
                 data: heatmapData,
-                radius: 20,
+                radius: 75,
                 opacity: 0.6
             });
 

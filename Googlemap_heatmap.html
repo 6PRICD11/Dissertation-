@@ -7,16 +7,16 @@
         function initMap() {
             var map = new google.maps.Map(document.getElementById("map"), {
                 zoom: 3,
-                center: { lat: 20, lng: 0 },
+                center: { lat: 20, lng: 0 }, // Global center
                 mapTypeId: "roadmap"
             });
 
-            var heatmapData = [{location: new google.maps.LatLng(51.536800, -0.671800), weight: 5}, {location: new google.maps.LatLng(51.536800, -0.671800), weight: 3}, {location: new google.maps.LatLng(51.536800, -0.671800), weight: 4}, {location: new google.maps.LatLng(51.536800, -0.671800), weight: 2}, {location: new google.maps.LatLng(50.116900, 8.683700), weight: 7}, {location: new google.maps.LatLng(37.751000, -97.822000), weight: 8}, {location: new google.maps.LatLng(51.508100, -0.127800), weight: 6}]; // Insert JSON data from Lua
+            var heatmapData = [new google.maps.LatLng(51.536800, -0.671800), new google.maps.LatLng(51.536800, -0.671800), new google.maps.LatLng(51.536800, -0.671800), new google.maps.LatLng(51.536800, -0.671800), new google.maps.LatLng(50.116900, 8.683700), new google.maps.LatLng(37.751000, -97.822000), new google.maps.LatLng(51.508100, -0.127800), new google.maps.LatLng(23.118100, 113.253900), new google.maps.LatLng(53.338200, -6.259100), new google.maps.LatLng(51.508100, -0.127800), new google.maps.LatLng(37.751000, -97.822000), new google.maps.LatLng(37.751000, -97.822000), new google.maps.LatLng(37.751000, -97.822000), new google.maps.LatLng(37.751000, -97.822000), new google.maps.LatLng(38.907200, -77.036900), new google.maps.LatLng(47.606200, -122.332100), new google.maps.LatLng(40.712800, -74.006000), new google.maps.LatLng(48.856600, 2.352200), new google.maps.LatLng(1.352100, 103.819800), new google.maps.LatLng(-37.813600, 144.963100), new google.maps.LatLng(34.052200, -118.243700), new google.maps.LatLng(25.761700, -80.191800), new google.maps.LatLng(35.689500, 139.691700), new google.maps.LatLng(52.520000, 13.405000), new google.maps.LatLng(19.076000, 72.877700), new google.maps.LatLng(-34.603700, -58.381600), new google.maps.LatLng(50.088000, 14.420800), new google.maps.LatLng(52.367600, 4.904100), new google.maps.LatLng(13.756300, 100.501800), new google.maps.LatLng(22.319300, 114.169400), new google.maps.LatLng(41.008200, 28.978400), new google.maps.LatLng(49.282700, -123.121600), new google.maps.LatLng(50.450100, 30.523400), new google.maps.LatLng(4.711000, -74.072100), new google.maps.LatLng(-15.794200, -47.882500), new google.maps.LatLng(35.011600, 135.768100), new google.maps.LatLng(35.676200, 139.650300), new google.maps.LatLng(39.904200, 116.407400), new google.maps.LatLng(41.902800, 12.496400), new google.maps.LatLng(43.653200, -79.383200), new google.maps.LatLng(-27.469800, 153.025100), new google.maps.LatLng(-22.906800, -43.172900), new google.maps.LatLng(50.937500, 6.960300), new google.maps.LatLng(-33.868800, 151.209300), new google.maps.LatLng(55.953300, -3.188300), new google.maps.LatLng(55.864200, -4.251800), new google.maps.LatLng(51.507400, -0.122600), new google.maps.LatLng(45.501700, -73.567300), new google.maps.LatLng(52.132600, 5.291300), new google.maps.LatLng(36.169900, -115.146700), new google.maps.LatLng(29.951100, -90.071500), new google.maps.LatLng(21.306900, -157.858300), new google.maps.LatLng(48.135100, 11.581000), new google.maps.LatLng(55.755800, 37.617300), new google.maps.LatLng(48.858400, 2.294500)]; // Insert JSON data from Lua
 
             var heatmap = new google.maps.visualization.HeatmapLayer({
                 data: heatmapData,
-                radius: 20,
-                opacity: 0.6
+                radius: 40, // Adjust radius for effect
+                opacity: 0.6 // Adjust opacity for better visibility
             });
 
             heatmap.setMap(map);

@@ -75,7 +75,7 @@ local html_template = [[
 
             var heatmap = new google.maps.visualization.HeatmapLayer({
                 data: heatmapData,
-                radius: 20, // Adjust radius for effect
+                radius: 40, // Adjust radius for effect
                 opacity: 0.6 // Adjust opacity for better visibility
             });
 
