@@ -23,7 +23,7 @@ local html_template = [[
 <body>
     <div id="map"></div>
     <script>
-        var map = L.map('map').setView([40, 0], 3);
+        var map = L.map('map').setView([20, 0], 3);
         
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '© OpenStreetMap contributors'
