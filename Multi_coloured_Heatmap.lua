@@ -23,12 +23,20 @@ local addresses = {
     { address = "45.33.32.156", longitude = -80.1918, latitude = 25.7617 },
     { address = "129.250.35.250", longitude = 139.6917, latitude = 35.6895 },
     { address = "217.160.86.6", longitude = 13.405, latitude = 52.52 },
+    { address = "2.18.27.77", longitude = -0.6721, latitude = 51.5371 },  
+    { address = "2.18.27.78", longitude = -3.1883, latitude = 55.9533 },  
+    { address = "2.18.27.79", longitude = 2.3522, latitude = 48.8566 },  
+    { address = "2.18.27.80", longitude = 4.8357, latitude = 45.7640 },  
+    { address = "2.18.27.81", longitude = 13.4050, latitude = 52.5200 },
+    { address = "34.102.136.200", longitude = -74.0060, latitude = 40.7128 },  
+    { address = "18.232.56.190", longitude = -95.3698, latitude = 29.7604 },  
+    { address = "44.239.23.101", longitude = -122.3321, latitude = 47.6062 }, 
+    { address = "35.185.128.75", longitude = -118.2437, latitude = 34.0522 }, 
 }
 
-
 local highlighted_addresses = {
-    addresses[1], addresses[2], addresses[3], 
-    addresses[10], addresses[15] 
+    addresses[25], addresses[26], addresses[27], 
+    addresses[28], addresses[29] 
 }
 
 local html_template = [[
@@ -50,14 +58,14 @@ local html_template = [[
 
             var heatmap = new google.maps.visualization.HeatmapLayer({
                 data: heatmapData,
-                radius: 40,
-                opacity: 0.6
+                radius: 65,
+                opacity: 0.7
             });
 
             var highlightedHeatmap = new google.maps.visualization.HeatmapLayer({
                 data: highlightedHeatmapData,
-                radius: 50,
-                opacity: 0.9,
+                radius: 40,
+                opacity: 0.7,
                 gradient: [
                     'rgba(0, 255, 255, 0)',
                     'rgba(0, 255, 255, 1)',
