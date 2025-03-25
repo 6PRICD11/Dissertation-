@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Google Maps Heatmap</title>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCL20d4eLO1fFvfqkpz4l1WDYhqMM9pRF8&libraries=visualization"></script>
+    <script>
+        function initMap() {
+            var map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 3,
+                center: { lat: 20, lng: 0 },
+                mapTypeId: "roadmap"
+            });
+
+            var heatmapData = [{"lat": 51.536800, "lng": -0.671800}, {"lat": 51.536800, "lng": -0.671800}, {"lat": 51.536800, "lng": -0.671800}, {"lat": 51.536800, "lng": -0.671800}, {"lat": 50.116900, "lng": 8.683700}, {"lat": 37.751000, "lng": -97.822000}, {"lat": 51.508100, "lng": -0.127800}, {"lat": 23.118100, "lng": 113.253900}, {"lat": 53.338200, "lng": -6.259100}, {"lat": 51.508100, "lng": -0.127800}, {"lat": 37.751000, "lng": -97.822000}, {"lat": 37.751000, "lng": -97.822000}, {"lat": 37.751000, "lng": -97.822000}, {"lat": 37.751000, "lng": -97.822000}, {"lat": 38.907200, "lng": -77.036900}, {"lat": 47.606200, "lng": -122.332100}, {"lat": 40.712800, "lng": -74.006000}, {"lat": 48.856600, "lng": 2.352200}, {"lat": 1.352100, "lng": 103.819800}, {"lat": -37.813600, "lng": 144.963100}, {"lat": 34.052200, "lng": -118.243700}, {"lat": 25.761700, "lng": -80.191800}, {"lat": 35.689500, "lng": 139.691700}, {"lat": 52.520000, "lng": 13.405000}];
+            var highlightedHeatmapData = [{"lat": 50.116900, "lng": 8.683700}, {"lat": 51.508100, "lng": -0.127800}, {"lat": 38.907200, "lng": -77.036900}, {"lat": -37.813600, "lng": 144.963100}];
+            var markerData = [{"lat": 51.536800, "lng": -0.671800}, {"lat": 51.536800, "lng": -0.671800}, {"lat": 51.536800, "lng": -0.671800}, {"lat": 51.536800, "lng": -0.671800}, {"lat": 50.116900, "lng": 8.683700}, {"lat": 37.751000, "lng": -97.822000}, {"lat": 51.508100, "lng": -0.127800}, {"lat": 23.118100, "lng": 113.253900}, {"lat": 53.338200, "lng": -6.259100}, {"lat": 51.508100, "lng": -0.127800}, {"lat": 37.751000, "lng": -97.822000}, {"lat": 37.751000, "lng": -97.822000}, {"lat": 37.751000, "lng": -97.822000}, {"lat": 37.751000, "lng": -97.822000}, {"lat": 38.907200, "lng": -77.036900}, {"lat": 47.606200, "lng": -122.332100}, {"lat": 40.712800, "lng": -74.006000}, {"lat": 48.856600, "lng": 2.352200}, {"lat": 1.352100, "lng": 103.819800}, {"lat": -37.813600, "lng": 144.963100}, {"lat": 34.052200, "lng": -118.243700}, {"lat": 25.761700, "lng": -80.191800}, {"lat": 35.689500, "lng": 139.691700}, {"lat": 52.520000, "lng": 13.405000}];
+
+            var heatmap = new google.maps.visualization.HeatmapLayer({
+                data: heatmapData.map(loc => new google.maps.LatLng(loc.lat, loc.lng)),
+                radius: 65,
+                opacity: 0.7
+            });
+
+            var highlightedHeatmap = new google.maps.visualization.HeatmapLayer({
+                data: highlightedHeatmapData.map(loc => new google.maps.LatLng(loc.lat, loc.lng)),
+                radius: 40,
+                opacity: 0.7,
+                gradient: [
+                    'rgba(0, 255, 255, 0)',
+                    'rgba(0, 255, 255, 1)',
+                    'rgba(0, 191, 255, 1)',
+                    'rgba(0, 127, 255, 1)',
+                    'rgba(0, 63, 255, 1)',
+                    'rgba(0, 0, 255, 1)',
+                    'rgba(63, 0, 191, 1)',
+                    'rgba(127, 0, 127, 1)',
+                    'rgba(191, 0, 63, 1)',
+                    'rgba(255, 0, 0, 1)'
+                ]
+            });
+
+            heatmap.setMap(map);
+            highlightedHeatmap.setMap(map);
+
+            // Add markers
+            var markers = [];
+            markerData.forEach(function(location) {
+                var marker = new google.maps.Marker({
+                    position: location,
+                    map: null  // Initially hidden
+                });
+                markers.push(marker);
+            });
+
+            // Show markers when zoom > 6
+            map.addListener('zoom_changed', function() {
+                var zoomLevel = map.getZoom();
+                markers.forEach(marker => {
+                    marker.setMap(zoomLevel > 6 ? map : null);
+                });
+            });
+        }
+    </script>
+</head>
+<body onload="initMap()">
+    <div id="map" style="width: 100%; height: 600px;"></div>
+</body>
+</html>
